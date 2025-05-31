@@ -1,0 +1,52 @@
+<mat-card class="tweakpane">
+    <div class="tweakpane-header">
+        <h3>{{ title }}</h3>
+        <mat-icon class="icon-tweak-toggle" (click)="toggleCollapse()">{{ collapsed ? 'expand_more' : 'expand_less' }}</mat-icon>
+    </div>
+
+    <div *ngIf="!collapsed" class="tweakpane-body">
+        <div *ngFor="let control of controls">
+            <ng-container [ngSwitch]="control.type">
+
+                <!-- Number input -->
+                <mat-form-field *ngSwitchCase="'number'" appearance="fill">
+                    <mat-label>{{ control.label }}</mat-label>
+                    <input matInput type="number" name="{{control.name}}" [(ngModel)]="control.value"
+                        (ngModelChange)="onValueChange(control)" />
+                </mat-form-field>
+
+                <!-- Boolean -->
+                <mat-slide-toggle *ngSwitchCase="'boolean'" [(ngModel)]="control.value" name="{{control.name}}"
+                    (change)="onValueChange(control)">
+                    {{ control.label }}
+                </mat-slide-toggle>
+
+                <!-- Slider -->
+                <div *ngSwitchCase="'slider'">
+                    <label>{{ control.label }}</label>
+                    <mat-slider (input)="onValueChange(control)">
+                        <input matSliderThumb type="range" name="{{control.name}}" [(ngModel)]="control.value" />
+                    </mat-slider>
+                </div>
+
+                <!-- Text input -->
+                <mat-form-field *ngSwitchCase="'text'" appearance="fill">
+                    <mat-label>{{ control.label }}</mat-label>
+                    <input matInput type="text" name="{{control.name}}" [(ngModel)]="control.value"
+                        (ngModelChange)="onValueChange(control)" />
+                </mat-form-field>
+
+                <!-- Dropdown -->
+                <mat-form-field *ngSwitchCase="'dropdown'" appearance="fill">
+                    <mat-label>{{ control.label }}</mat-label>
+                    <mat-select name="{{control.name}}" [(ngModel)]="control.value"
+                        (selectionChange)="onValueChange(control)">
+                        <mat-option *ngFor="let option of control.options" [value]="option.value">{{ option.label
+                            }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </ng-container>
+        </div>
+    </div>
+</mat-card>

@@ -1,0 +1,16 @@
+<mgl-map #map [style]="'https://api.maptiler.com/maps/streets-v2/style.json?key=x5EfXrIDiRScOPCSUPJ6'" [zoom]="[8]"
+  (mapLoad)="onMapLoad($event)" [center]="[-71.5, 42.3]">
+  @if (MBTAStops$ | async; as mbtaData) {
+  <mgl-geojson-source id="mbta-locations" [data]="mbtaData"> </mgl-geojson-source>
+  <mgl-layer id="stops-layer" type="circle" source="mbta-locations" [paint]="{
+      'circle-radius': 6,
+      'circle-color': '#007cbf',
+      'circle-stroke-width': 1,
+      'circle-stroke-color': '#fff'
+    }"
+    (layerMouseEnter)="mouseEventTest($event)"></mgl-layer>
+  }
+
+</mgl-map>
+
+<app-tweakpane [title]="'Settings'" [controls]="tweakControls" (valueChanged)="onControlChange($event)" />
