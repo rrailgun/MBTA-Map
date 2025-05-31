@@ -40,18 +40,6 @@ export class MapViewComponent implements OnInit {
 
   tweakControls: TweakControl[] = [
     {
-      name: 'location_type',
-      label: 'Location Type',
-      type: 'dropdown',
-      value: undefined,
-      options: [
-        { label: 'All', value: undefined },
-        { label: 'Boarding Area', value: LocationType.ENTRANCE_EXIT },
-        { label: 'Station', value: LocationType.STATION },
-        { label: 'Platform', value: LocationType.PLATFORM },
-      ]
-    },
-    {
       name: 'route_type',
       label: 'Route Type',
       type: 'dropdown',

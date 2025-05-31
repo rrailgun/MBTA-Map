@@ -3,7 +3,7 @@ import { RouteType } from "../enum/route_type";
 
 export interface MBTAFilter {
     route_type?: RouteType
-    location_type?: LocationType
+    location_type?: LocationType | LocationType[]
 }
 
 export type FilterName = 'location_type'|'route_type'
