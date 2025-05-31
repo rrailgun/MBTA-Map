@@ -48,9 +48,8 @@ export class MapViewComponent implements OnInit {
         { label: 'All', value: undefined },
         { label: 'Bus', value: RouteType.BUS },
         { label: 'Ferry', value: RouteType.FERRY },
-        { label: 'Light Rail', value: RouteType.LIGHT_RAIL },
-        { label: 'Rail', value: RouteType.RAIL },
-        { label: 'Subway', value: RouteType.SUBWAY },
+        { label: 'Light Rail and Subway', value: [RouteType.LIGHT_RAIL, RouteType.SUBWAY] },
+        { label: 'Commuter Rail', value: RouteType.RAIL },
       ]
     },
   ];

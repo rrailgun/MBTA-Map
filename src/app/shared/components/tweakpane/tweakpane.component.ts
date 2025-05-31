@@ -45,7 +45,7 @@ export interface TextControl extends BaseTweakControl {
 
 export interface DropdownOption {
   label: string;
-  value: string | number | undefined;
+  value: string | number | undefined | number[] | string[];
 }
 
 export interface DropdownControl extends BaseTweakControl {
